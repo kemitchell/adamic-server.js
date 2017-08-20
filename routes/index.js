@@ -12,3 +12,5 @@ routes.set('/', function root (request, response, directory) {
 routes.set('/log', require('./log'))
 
 routes.set('/entries/:digest', require('./entries'))
+
+routes.set('/password', require('./password'))

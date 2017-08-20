@@ -21,7 +21,7 @@ tape('GET /', function (test) {
               test.ifError(error, 'valid JSON')
               if (!error) {
                 test.equal(
-                  parsed.service, 'adamic-server',
+                  parsed.service, 'adamic',
                   'server'
                 )
                 test.assert(

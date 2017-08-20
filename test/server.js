@@ -6,13 +6,10 @@ var rimraf = require('rimraf')
 
 module.exports = function testServer (callback) {
   fs.mkdtemp('/tmp/', function withDirectory (ignore, directory) {
-    var configuration = {
-      directory: directory
-    }
     var log = pino({}, fs.createWriteStream('test-server.log'))
-    var server = http.createServer(makeHandler(configuration, log))
+    var server = http.createServer(makeHandler(directory, log))
     server.listen(0, function onListening () {
-      callback(this.address().port, configuration, function done () {
+      callback(this.address().port, directory, function done () {
         server.close(function () {
           rimraf.sync(directory)
         })

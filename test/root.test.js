@@ -5,7 +5,7 @@ var simpleConcat = require('simple-concat')
 var tape = require('tape')
 
 tape('GET /', function (test) {
-  server(function (port, configuration, done) {
+  server(function (port, directory, done) {
     http.request({
       port: port,
       path: '/'

@@ -4,10 +4,6 @@ var pino = require('pino')
 
 var DIRECTORY = process.env.DIRECTORY || 'adamic'
 var PORT = process.env.PORT || 8080
-var configuration = {
-  directory: DIRECTORY,
-  port: PORT
-}
 
 var NAME = require('./package.json').name
 var VERSION = require('./package.json').version
@@ -15,7 +11,7 @@ var log = pino({name: NAME + '@' + VERSION})
 
 log.info({event: 'data', directory: DIRECTORY})
 
-var requestHandler = makeHandler(configuration, log)
+var requestHandler = makeHandler(directory, log)
 var server = http.createServer(requestHandler)
 
 if (module.parent) {

@@ -11,7 +11,7 @@ module.exports = function makeRequestHandler (directory, log) {
     request.pathname = parsed.pathname
     var route = routes.get(parsed.pathname)
     if (route.handler) {
-      request.params = route.params
+      request.parameters = route.params
       route.handler(request, response, directory)
     } else {
       response.statusCode = 404

@@ -5,9 +5,9 @@ module.exports = function writeKeys (directory, keys, callback) {
   fs.writeFile(
     keysPath(directory),
     (
-      keys.public.toString('hex') +
+      keys.publicKey.toString('hex') +
       ',' +
-      keys.private.toString('hex')
+      keys.privateKey.toString('hex')
     ),
     'ASCII',
     callback

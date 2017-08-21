@@ -1,9 +1,10 @@
+var decode = require('./decode')
 var fs = require('fs')
 var keysPath = require('./paths/keys')
 
 var FORMAT = new RegExp(
   '^' +
-  '(' + require('./patterns/public-key')  + ')' +
+  '(' + require('./patterns/public-key') + ')' +
   ',' +
   '(' + require('./patterns/private-key') + ')' +
   '$'
@@ -20,8 +21,8 @@ module.exports = function readKeys (directory, callback) {
       if (!match) callback(new Error('malformed keys file'))
       else {
         callback(null, {
-          public: Buffer.from(match[1], 'hex'),
-          private: Buffer.from(match[2], 'hex')
+          publicKey: Buffer.from(match[1], 'hex'),
+          privateKey: Buffer.from(match[2], 'hex')
         })
       }
     }

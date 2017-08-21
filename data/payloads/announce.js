@@ -1,6 +1,9 @@
-module.exports = function announce (public) {
+var crypto = require('crypto')
+
+module.exports = function announce (publicKey) {
   return {
     type: 'announce',
-    public: public.toString('hex')
+    nonce: crypto.randomBytes(32).toString('hex'),
+    publicKey: publicKey.toString('hex')
   }
 }

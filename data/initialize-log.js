@@ -20,9 +20,9 @@ module.exports = function initializeLog (directory, callback) {
 
   function withKeys (keys) {
     withLogLock(directory, ecb(callback, function (unlock) {
-      var payload = announce(keys.public)
+      var payload = announce(keys.publicKey)
       var entry = {
-        payload: announce(keys.public),
+        payload: announce(keys.publicKey),
         signature: signature(payload, keys).toString('hex')
       }
       writeEntry(directory, entry, unlock, callback)

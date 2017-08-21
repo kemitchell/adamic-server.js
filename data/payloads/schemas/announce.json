@@ -5,14 +5,19 @@
       "type": "string",
       "const": "announce"
     },
-    "public": {
+    "nonce": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "publicKey": {
       "type": "string",
       "pattern": "^[0-9a-f]{64}$"
     }
   },
   "required": [
     "type",
-    "public"
+    "nonce",
+    "publicKey"
   ],
   "additionalProperties": false
 }

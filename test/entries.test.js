@@ -43,7 +43,7 @@ tape('GET /entries/{digest}', function (t) {
                     'announce payload'
                   )
                   t.assert(
-                    /^[0-9a-f]{64}$/.test(parsed.payload.public),
+                    /^[0-9a-f]{64}$/.test(parsed.payload.publicKey),
                     'public key'
                   )
                   finish()

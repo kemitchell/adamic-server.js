@@ -21,8 +21,8 @@ module.exports = function readKeys (directory, callback) {
       if (!match) callback(new Error('malformed keys file'))
       else {
         callback(null, {
-          publicKey: Buffer.from(match[1], 'hex'),
-          privateKey: Buffer.from(match[2], 'hex')
+          publicKey: decode(Buffer.from(match[1])),
+          privateKey: decode(Buffer.from(match[2]))
         })
       }
     }

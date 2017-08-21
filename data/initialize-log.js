@@ -1,5 +1,6 @@
 var announce = require('./payloads/announce')
 var ecb = require('ecb')
+var encode = require('./encode')
 var generateKeys = require('./generate-keys')
 var readKeys = require('./read-keys')
 var signature = require('./signature')
@@ -23,7 +24,7 @@ module.exports = function initializeLog (directory, callback) {
       var payload = announce(keys.publicKey)
       var entry = {
         payload: announce(keys.publicKey),
-        signature: signature(payload, keys).toString('hex')
+        signature: encode(signature(payload, keys))
       }
       writeEntry(directory, entry, unlock, callback)
     }))

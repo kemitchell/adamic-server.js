@@ -1,10 +1,11 @@
-var logPath = require('./paths/log')
+var encode = require('./encode')
 var fs = require('fs')
+var logPath = require('./paths/log')
 
 module.exports = function appendDigest (directory, digest, callback) {
   fs.appendFile(
     logPath(directory),
-    digest.toString('hex') + '\n',
+    encode(digest) + '\n',
     callback
   )
 }

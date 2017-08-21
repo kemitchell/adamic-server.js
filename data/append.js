@@ -28,7 +28,7 @@ module.exports = function append (directory, payload, callback) {
           var entry = {
             prior: lastDigest,
             payload: payload,
-            signature: signature(payload, keys).toString('hex')
+            signature: encode(signature(payload, keys))
           }
           writeEntry(directory, entry, unlock, callback)
         }

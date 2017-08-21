@@ -1,5 +1,5 @@
-var requirePassword = require('./require-password')
 var internalError = require('./internal-error')
+var requirePassword = require('./require-password')
 var simpleConcat = require('simple-concat')
 var writePasswordHash = require('../data/write-password-hash')
 

@@ -1,9 +1,10 @@
 var crypto = require('crypto')
+var encode = require('../encode')
 
 module.exports = function announce (publicKey) {
   return {
     type: 'announce',
-    nonce: crypto.randomBytes(32).toString('hex'),
-    publicKey: publicKey.toString('hex')
+    nonce: encode(crypto.randomBytes(32)),
+    publicKey: encode(publicKey)
   }
 }

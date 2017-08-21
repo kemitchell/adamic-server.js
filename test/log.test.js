@@ -3,7 +3,7 @@ var server = require('./server')
 var simpleConcat = require('simple-concat')
 var tape = require('tape')
 
-tape('GET /', function (t) {
+tape('GET /log', function (t) {
   server(function (port, directory, done) {
     http.request({
       port: port,

@@ -9,7 +9,9 @@ routes.set('/', function root (request, response, directory) {
   }))
 })
 
-routes.set('/log', require('./log'))
+routes.set('/logs', require('./logs'))
+
+routes.set('/logs/:public', require('./log'))
 
 routes.set('/entries/:digest', require('./entries'))
 

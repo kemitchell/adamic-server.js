@@ -1,13 +1,8 @@
 var ecb = require('ecb')
 var lockfile = require('lockfile')
 var logPath = require('./paths/log')
+var lock = require('./lock')
 
-module.exports = function (directory, callback) {
-  var logFile = logPath(directory)
-  var lock = logFile + '.lock'
-  lockfile.lock(lock, ecb(callback, function () {
-    callback(null, function (callback) {
-      lockfile.unlock(lock, callback)
-    })
-  }))
+module.exports = function (directory, publicKey, callback) {
+  lock(publicKey, callback)
 }

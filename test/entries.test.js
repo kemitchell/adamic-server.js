@@ -4,7 +4,7 @@ var server = require('./server')
 var simpleConcat = require('simple-concat')
 var tape = require('tape')
 
-tape('GET /entries/{digest}', function (t) {
+tape.skip('GET /logs/{key}/entries/{digest}', function (t) {
   server(function (port, directory, done) {
     http.get({port: port, path: '/log'})
       .once('error', onHTTPError)

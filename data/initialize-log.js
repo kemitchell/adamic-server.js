@@ -19,13 +19,17 @@ module.exports = function initializeLog (directory, callback) {
   }))
 
   function withKeys (keys) {
-    withLogLock(directory, ecb(callback, function (unlock) {
-      var payload = announce(keys.public)
-      var entry = {
-        payload: announce(keys.public),
-        signature: signature(payload, keys).toString('hex')
-      }
-      writeEntry(directory, entry, unlock, callback)
-    }))
+    var encodedPublicKey = keys.publicKey.toString('hex')
+    withLogLock(
+      directory, encodedPublicKey,
+      ecb(callback, function (unlock) {
+        var payload = announce(keys.publicKey)
+        var entry = {
+          payload: announce(keys.publicKey),
+          signature: signature(payload, keys).toString('hex')
+        }
+        writeEntry(directory, entry, unlock, callback)
+      })
+    )
   }
 }

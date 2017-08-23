@@ -8,11 +8,11 @@ var split2 = require('split2')
 var withLogLock = require('./with-log-lock')
 var writeEntry = require('./write-entry')
 
-module.exports = function append (directory, payload, callback) {
-  withLogLock(directory, ecb(callback, function (unlock) {
+module.exports = function append (directory, publicKey, payload, callback) {
+  withLogLock(directory, publicKey, function (unlock) {
     var lastDigest
     pump(
-      fs.createReadStream(logPath(directory)),
+      fs.createReadStream(logPath(directory, public)),
       split2('\n'),
       flushWriteStream.obj(function (line, _, done) {
         lastDigest = line
@@ -34,5 +34,5 @@ module.exports = function append (directory, payload, callback) {
         }
       }
     )
-  }))
+  })
 }

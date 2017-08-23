@@ -5,7 +5,7 @@ module.exports = function generateKeys () {
   var seed = crypto.randomBytes(32)
   var keypair = ed25519.MakeKeypair(seed)
   return {
-    public: keypair.publicKey,
-    private: keypair.privateKey
+    publicKey: keypair.publicKey,
+    privateKey: keypair.privateKey
   }
 }

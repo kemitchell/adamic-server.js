@@ -1,5 +1,6 @@
 var path = require('path')
+var logsPath = require('./logs')
 
-module.exports = function (directory) {
-  return path.join(directory, 'log')
+module.exports = function (directory, publicKey) {
+  return path.join(logsPath(directory), publicKey)
 }
